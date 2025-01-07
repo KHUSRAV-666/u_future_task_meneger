@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { Task } from "../services/api";
 
-function TaskItem(task: Task) {
-  const [priority, setPriority] = useState("Без приоритета");
+interface TaskListItemProps {
+  task: Task;
+  onPriorityChange: (taskId: number, newPriority: string) => void; // Тип для пропса
+}
+
+const TaskListItem: React.FC<TaskListItemProps> = ({ task, onPriorityChange }) => {
   const priorities = ["Без приоритета", "Низкий", "Средний", "Высокий"];
 
-  const handlePriorityChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    setPriority(event.target.value);
+  const handlePriorityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const newPriority = event.target.value;
+    onPriorityChange(task.id, newPriority);
   };
 
   return (
@@ -17,10 +20,10 @@ function TaskItem(task: Task) {
       key={task.id}
     >
       <select
-        className={`status_${+priorities.indexOf(
-          priority
+        className={`status_${priorities.indexOf(
+          task.priority || "Без приоритета"
         )}`}
-        value={priority}
+        value={task.priority}
         onChange={handlePriorityChange}
       >
         {priorities.map((option) => (
@@ -29,10 +32,11 @@ function TaskItem(task: Task) {
           </option>
         ))}
       </select>
+      <span>{task.id}.</span>
       <h4>{task.title}</h4>
       <p
         className={`task-list_item-status ${
-          task.completed ? "_completed" : ""
+          task.completed ? "completed" : ""
         }`}
       >
         {task.completed ? "Выполнено" : "Не выполнено"}
@@ -41,4 +45,4 @@ function TaskItem(task: Task) {
   );
 }
 
-export default TaskItem;
+export default TaskListItem;
