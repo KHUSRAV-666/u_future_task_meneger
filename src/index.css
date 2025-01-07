@@ -1,0 +1,115 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #213547;
+  background-color: blanchedalmond;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.task-list_wrapper {
+  width: 100%;
+  padding: 10px;
+}
+.task-list_wrapper ul {
+  padding: 0px;
+}
+
+.task-list_item {
+  display: grid;
+  grid-template-columns: 120px auto 120px;
+  background-color: rgba(210, 105, 30, 0.4);
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+.task-list_item select {
+  outline: none;
+  border: none;
+  padding-left: 2px;
+  background-color: #213547;
+  color: white;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  font-size: 13px;
+}
+
+.task-list_item select.status_1 {
+  color: rgb(255, 217, 0);
+}
+.task-list_item select.status_2 {
+  color: rgba(255, 145, 0, 0.993);
+}
+.task-list_item select.status_3 {
+  color: red;
+}
+
+.task-list_item h4 {
+  padding-left: 10px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-list_item p {
+  margin: 0;
+  background-color: rgb(210, 105, 30);
+  color: white;
+  text-align: center;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  font-size: 13px;
+}
+
+.task-list_item._completed {
+  background-color: rgba(0, 233, 74, 0.4);
+}
+.task-list_item._completed p {
+  background-color: rgb(0, 223, 74);
+}
