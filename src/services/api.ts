@@ -3,6 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export interface Task {
   id: number;
   title: string;
+  description?: string;
   completed: boolean;
   priority?: string;
 }
